@@ -1,7 +1,6 @@
 package com.kunal.AuthService.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
@@ -28,4 +26,11 @@ public class User {
     private Role role;
 
     private boolean enabled = true;
+
+    public User(String email, String password, Role role, boolean enabled) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.enabled = enabled;
+    }
 }

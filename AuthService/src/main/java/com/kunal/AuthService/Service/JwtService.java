@@ -11,7 +11,7 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    private final String jwtSecret = "VERY_SECRET_KEY_CHANGE_ME";
+    private final String jwtSecret = "asdfghjksdhbfhjbksjdKunal.kohli@myemail";
     private final long jwtExpirationMs = 15 * 60 * 1000;
 
     public String generateToken(User user) {

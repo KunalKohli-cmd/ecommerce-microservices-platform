@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: auth-postgres
+    environment:
+      POSTGRES_DB: authdb
+      POSTGRES_USER: auth
+      POSTGRES_PASSWORD: auth
+    ports:
+      - "5432:5432"
+    restart: "unless-stopped"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U auth -d authdb" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  auth-service:
+    build: .
+    container_name: auth-service
+    depends_on:
+      - postgres
+    ports:
+      - "8081:8081"
+
+volumes:
+  postgres-data:

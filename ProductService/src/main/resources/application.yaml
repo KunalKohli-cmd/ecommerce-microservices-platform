@@ -1,3 +1,18 @@
+server:
+  port: 8082
+
 spring:
-  application:
-    name: ProductService
+  datasource:
+    url: jdbc:postgresql://localhost:5432/product
+    username:
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
